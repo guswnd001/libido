@@ -1,3 +1,0 @@
-/amado/pages/join.do=handler.JoinHandler
-/amado/pages/login.do=handler.LoginHandler
-/amado/pages/logout.do=handler.LogoutHandler

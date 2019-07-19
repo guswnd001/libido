@@ -1,7 +1,0 @@
-/join.do=handler.JoinHandler
-/login.do=handler.LoginHandler
-/logout.do=handler.LogoutHandler
-/board/write.do=handler.WriteHandler
-/board/list.do=handler.ListHandler
-/board/content.do=handler.ContentHandler
-

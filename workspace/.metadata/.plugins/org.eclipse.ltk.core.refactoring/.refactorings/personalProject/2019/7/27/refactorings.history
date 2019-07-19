@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;personalProject/WebContent/amado/pages/b_update.jsp&apos; to &apos;b_updatePro.jsp&apos;" description="Rename resource &apos;b_update.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/amado/pages/b_update.jsp" name="b_updatePro.jsp" stamp="1562037339784" updateReferences="true"/>
-</session>
