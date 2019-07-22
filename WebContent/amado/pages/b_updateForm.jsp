@@ -2,16 +2,7 @@
 <%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%
-	int num = Integer.parseInt(request.getParameter("num"));
-	String pageNum = request.getParameter("pageNum");
-	String kind = request.getParameter("kind");
-	
-	
-	BoardDao dbPro = BoardDao.getInstance();
-	Board article =  dbPro.getUpdate(num, boardid);
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="cart-table-area section-padding-100">
 	<div class="container-fluid">
@@ -22,13 +13,14 @@
 						<h2>글 수정하기</h2>
 					</div>
 
-					<form action="b_updatePro.jsp" method="post" onsubmit="return checkIt()"
+					<form action="${ctxPath}/libido/update.do" method="post" onsubmit="return checkIt()"
 						  name="b_writeForm">
-						<input type="hidden" name="num" value="<%=num%>"> <!-- get방식으로 값을 보내기 위해 input type을 hidden으로 준다. -->
-						<input type="hidden" name="pageNum" value="<%=pageNum%>">
+						<input type="hidden" name="num" value="${num }"> <!-- get방식으로 값을 보내기 위해 input type을 hidden으로 준다. -->
+						<input type="hidden" name="pageNum" value="${pageNum }">
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<select class="w-100" name="kind">
+									<option id="kd" value="${kind }" selected="selected">${kind }</option>
 									<option name="kd" value="교환">교환</option>
 									<option name="kd" value="환불/취소">환불/취소</option>
 									<option name="kd" value="배송">배송</option>
@@ -37,32 +29,32 @@
 									<option name="kd" value="기타문의">기타문의</option>
 								</select>
 								
-								<script>
+								<!-- <script>
 									var kd = document.getElementsByName("kd");
 									
 									for (var i = 0; i < kind.length; i++) {
-										if (kd[i].value == <%=kind%>) {
-											kd[i].className += " selected";
+										if (kd[i].value == '${kind}') {
+											$("")
 										}
 									}
-								</script>
+								</script> -->
 								
 							</div>
 							<div class="col-md-6 mb-3">
-								<input type="text" class="form-control" name="writer" value="<%=article.getWriter() %>"
+								<input type="text" class="form-control" name="writer" value="${article.writer }"
 									placeholder="이름" required>
 							</div>
 							<div class="col-12 mb-3">
-								<input type="text" class="form-control" name="subject" value="<%=article.getSubject() %>"
+								<input type="text" class="form-control" name="subject" value="${article.subject }"
 									placeholder="제목" required>
 							</div>
 							<div class="col-12 mb-3">
 								<input type="email" class="form-control" name="email"
-									placeholder="E-mail" value="<%=article.getEmail() %>">
+									placeholder="E-mail" value="${article.email }">
 							</div>
 							<div class="col-12 mb-3">
 								<textarea class="form-control" name="content" rows="15" placeholder="내용" 
-										  style="width: 100%; height: 100%;"><%=article.getContent() %></textarea>
+										  style="width: 100%; height: 100%;">${article.content }</textarea>
 							</div>
 							<div class="col-md-6 mb-3">
 								<input type="password" class="form-control" name="passwd"
@@ -76,7 +68,7 @@
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="button" value="수정취소"
-									   onclick="javascript:window.location='b_list.jsp?pageNum=<%=pageNum%>'">
+									   onclick="javascript:window.location='${ctxPath}/libido/list.do?pageNum=${pageNum}'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">

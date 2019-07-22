@@ -14,7 +14,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 					<div class="cart-title">
 						<h2>회원가입</h2>
 					</div>
-					<form action="${ctxPath}/join.do" method="post" name="joinForm">
+					<form action="${ctxPath}/libido/join.do" method="post" name="joinForm">
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<input type="text" class="form-control" name="name"  value="${param.name}"
@@ -220,7 +220,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="button" value="가입취소"
-									   onclick="javascript:window.location='loginForm2.jsp'">
+									   onclick="location.href='${ctxPath}/libido/login.do'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">

@@ -1,3 +1,4 @@
+<%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,10 +9,12 @@
 </head>
 <body>
 
+
 <script>
-	alert("로그아웃 되었습니다.")
-	location.href = "<%=request.getContextPath()%>/amado/pages/index.jsp";
+	alert("로그인 해야만 글을 작성할 수 있습니다.");
+	location.href = "<%=request.getContextPath()%>/libido/list.do?pageNum=${pageNum}";
 </script>
+
 
 </body>
 </html>

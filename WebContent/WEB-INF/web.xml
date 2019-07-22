@@ -34,7 +34,7 @@
   		</param-value>
   	</context-param>
   	
-  	<servlet>
+  	<!-- <servlet>
   		<servlet-name>ControllerUsingURI</servlet-name>
   		<servlet-class>controller.ControllerUsingURI</servlet-class>
   		<init-param>
@@ -45,10 +45,19 @@
   		</init-param>
   		<load-on-startup>1</load-on-startup>
   	</servlet>
-  
   	<servlet-mapping>
   		<servlet-name>ControllerUsingURI</servlet-name>
   		<url-pattern>*.do</url-pattern>
+  	</servlet-mapping> -->
+  	
+  	<servlet>
+  		<servlet-name>BoardAction</servlet-name>
+  		<servlet-class>controller.BoardAction</servlet-class>
+  		<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>BoardAction</servlet-name>
+  		<url-pattern>/libido/*</url-pattern>
   	</servlet-mapping>
 		
 	<filter>
@@ -66,7 +75,7 @@
   </filter-mapping>
   
   
-  <filter>
+  <!-- <filter>
   	<filter-name>LoginCheckFilter</filter-name>
   	<filter-class>filter.LoginCheckFilter</filter-class>
   </filter>
@@ -75,6 +84,6 @@
   	<url-pattern>/changePwd.do</url-pattern>
   	<url-pattern>/article/write.do</url-pattern>
   	<url-pattern>/article/modify.do</url-pattern>
-  </filter-mapping>	
+  </filter-mapping>	 -->
 		
 </web-app>

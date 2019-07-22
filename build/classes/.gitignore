@@ -1,9 +1,5 @@
-/controller/
-/dao/
-/exception/
-/filter/
-/handler/
-/jdbc/
 /model/
+/controller/
+/handler/
 /service/
-/util/
+/dao/

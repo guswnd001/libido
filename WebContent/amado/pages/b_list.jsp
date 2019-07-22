@@ -18,7 +18,7 @@
 				</div>
 				<div class="cart-table clearfix" style="width: 1000px; position: absolute;">
 					<div align="right" class="mb-3">
-						<p><a href="<%=request.getContextPath()%>/board/write.do">글쓰기</a></p>
+						<p><a href="<%=request.getContextPath()%>/libido/write.do">글쓰기</a></p>
 					</div>
 					<table class="table">
 						<thead style="background-color: F5F7FA;">
@@ -45,7 +45,7 @@
 										&nbsp;<img src="<%=request.getContextPath()%>/images/level.gif" width="${article.re_level * 5}" height="16">
 										<img src="<%=request.getContextPath()%>/images/re.gif">
 									</c:if>
-										<a href="<%=request.getContextPath() %>/board/content.do?num=${article.num}&pageNum=${pageNum}&number=${number}">
+										<a href="<%=request.getContextPath() %>/libido/content.do?num=${article.num}&pageNum=${pageNum}&number=${number}">
 											${article.subject}</a>
 									<c:if test="${article.readcount > 15}">
 										<img src="<%=request.getContextPath()%>/images/hot.gif" border="0" height="16">
@@ -75,26 +75,26 @@
 <ul class="pagination justify-content-end mt-10">
 <c:if test="${startPage > bottomLine}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/board/list.do?pageNum=${startPage - bottomLine}">prev.</a>
+		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${startPage - bottomLine}">prev.</a>
 	</li>
 </c:if>
 
 <c:forEach var="i" begin="${startPage}" end="${endPage}">
 	<c:if test="${i < 10}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/board/list.do?pageNum=${i}">${ "0" + i}.</a>
+		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">${ "0" + i}.</a>
 	</li>
 	</c:if>
 	<c:if test="${i >= 10}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/board/list.do?pageNum=${i}">${i}.</a>
+		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">${i}.</a>
 	</li>
 	</c:if>
 </c:forEach>
 
 <c:if test="${endPage < pageCount}">	
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/board/list.do?pageNum=${startPage + bottomLine}">next.</a>
+		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${startPage + bottomLine}">next.</a>
 	</li>
 </c:if>
 </ul>

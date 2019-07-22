@@ -47,6 +47,26 @@
         </div>
     </div>
     <!-- Search Wrapper Area End -->
+    
+    <!-- Favorite Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close" style="padding-top: 13px;">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="fav" name="fav" id="fav" placeholder="위시리스트를 입력하세요.">
+                            <button type="submit"><img src="${ctxPath}/amado/img/core-img/search.png" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Favorite Wrapper Area End -->
 
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
@@ -55,7 +75,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="${ctxPath}/amado/pages/index.jsp"><img src="${ctxPath}/amado/img/core-img/libido_logo4.png" alt=""></a>
+                <a href="${ctxPath}/libido/index.do"><img src="${ctxPath}/amado/img/core-img/libido_logo4.png" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -70,7 +90,7 @@
 	</div>
 	<!-- Logo -->
 	<div class="logo">
-		<a href="${ctxPath}/amado/pages/index.jsp"><img src="${ctxPath}/amado/img/core-img/libido_logo.png" alt=""></a>
+		<a href="${ctxPath}/libido/index.do"><img src="${ctxPath}/amado/img/core-img/libido_logo.png" alt=""></a>
 	</div>
 	<!-- Amado Nav -->
 	
@@ -87,7 +107,7 @@
 				
 				if (admin != null && admin.equals("admin")) {
 			%>
-				<li><a name="a" href="${ctxPath}/amado/pages/memberList.jsp">회원정보 조회</a></li>
+				<li><a name="a" href="${ctxPath}/libido/memberList.do">회원정보 조회</a></li>
 			<%
 				}
 			%>
@@ -124,26 +144,26 @@
 			
 		<!-- Already Login -->
 		<c:if test="${! empty authUser }">
-			<a href="${ctxPath}/login.do" class="search-nav">
+			<a href="${ctxPath}/libido/login.do">
 			<img src="${ctxPath}/amado/img/core-img/login1.png" width="21px" height="21px" alt=""> 
 			내 정보</a>
 		</c:if>
 		
 		<!-- Not Login -->
 		<c:if test="${ empty authUser }">
-			<a href="${ctxPath}/login.do" class="search-nav">
+			<a href="${ctxPath}/libido/login.do">
 			<img src="${ctxPath}/amado/img/core-img/login1.png" width="21px" height="21px" alt=""> 
 			로그인</a>
-			<a href="${ctxPath}/join.do" class="search-nav">
+			<a href="${ctxPath}/libido/join.do">
 			<img src="${ctxPath}/amado/img/core-img/join.png" width="21px" height="21px" alt=""> 
 			회원가입</a>
 		</c:if>
 		
 		
-			<a href="${ctxPath}/board/list.do?boardid=1" class="search-nav">
+			<a href="${ctxPath}/libido/list.do?boardid=1">
 			<img src="${ctxPath}/amado/img/core-img/gongji.png" width="21px" height="21px" alt=""> 
 			공지사항</a>
-			<a href="${ctxPath}/board/list.do?boardid=2" class="search-nav">
+			<a href="${ctxPath}/libido/list.do?boardid=2">
 			<img src="${ctxPath}/amado/img/core-img/qna.png" width="21px" height="21px" alt=""> 
 			Q & A</a>
 		

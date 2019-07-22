@@ -30,7 +30,7 @@
 						<h2>로그인</h2>
 					</div>
 
-					<form action="${ctxPath}/login.do" method="post" onsubmit="return checkIt()"
+					<form action="${ctxPath}/libido/login.do" method="post" onsubmit="return checkIt()"
 						  name="loginForm">
 						<div class="row">
 							<div class="col-12 mb-3">
@@ -61,7 +61,7 @@
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="button" value="회원가입"
-									   onclick="location.href='${ctxPath}/join.do'">
+									   onclick="location.href='${ctxPath}/libido/join.do'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
@@ -94,17 +94,17 @@
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="button" value="로그아웃"
-									   onclick="location.href='${ctxPath}/logout.do'">
+									   onclick="location.href='${ctxPath}/libido/logout.do'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="reset" value="정보수정"
-									   onclick="location.href='${ctxPath}/update.do'">
+									   onclick="location.href='${ctxPath}/libido/update.do'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;'">
 								<input class="btn amado-btn" type="button" value="회원탈퇴"
-									   onclick="location.href='${ctxPath}/delete.do'">
+									   onclick="location.href='${ctxPath}/libido/delete.do'">
 							</div>
 						</div>
 					</form>

@@ -11,9 +11,9 @@ import model.User;
 
 public class LoginService {
 
-	private MemberDao memberDao = new MemberDao();
+	private static MemberDao memberDao = new MemberDao();
 	
-	public User login(String id, String password) {
+	public static User login(String id, String password) {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			Member member = memberDao.selectById(conn, id);
 			

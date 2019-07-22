@@ -108,4 +108,39 @@ public class MemberDao {
 		return list;
 	}
 	
+	public Member getMem(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member member = null;
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+			pstmt = conn.prepareStatement("select * from MEMBER_LIBIDO where id=?");
+			pstmt.setString(1,  id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				member = new Member();
+				member.setName(rs.getString("name"));
+				member.setBirth(rs.getString("birth"));
+				member.setId(id);
+				member.setEmail(rs.getString("email"));
+				member.setTel1(rs.getString("tel1"));
+				member.setTel2(rs.getString("tel2"));
+				member.setTel3(rs.getString("tel3"));
+				member.setAddress1(rs.getString("address1"));
+				member.setAddress2(rs.getString("address2"));
+				member.setZipcode(rs.getString("zipcode"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return member;
+	}
 }

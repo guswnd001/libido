@@ -45,9 +45,8 @@
 			<div class="col-12 col-lg-6 col-xl-5">
 				<div class="newsletter-form mb-100">
 					<form action="#" method="post">
-						<input type="email" name="email" class="nl-email"
-							placeholder="당신의 E-mail"> <input type="submit"
-							value="가입하기">
+						<input type="email" name="email" class="nl-email" placeholder="당신의 E-mail">
+						<input type="submit" value="가입하기">
 					</form>
 				</div>
 			</div>
@@ -77,9 +76,9 @@
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">HYEONJOONG KIM</a>
+							All rights reserved | This template is made with 
+							<i class="fa fa-heart-o" aria-hidden="true"></i> 
+							by <a href="https://colorlib.com" target="_blank">HYEONJOONG KIM</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>

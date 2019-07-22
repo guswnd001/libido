@@ -18,7 +18,6 @@ public class JoinService {
 	
 	public void join(JoinRequest joinReq) {
 		Connection conn = null;
-		aaaa
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
