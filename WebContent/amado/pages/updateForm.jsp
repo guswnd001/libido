@@ -2,12 +2,8 @@
 <%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String id = (String)session.getAttribute("memId"); //session은 로그인되어서 저장되어 있는 정보
-	MemberDao manager = new MemberDao(); 
-	
-	Member member = manager.getMember(id);
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script>
 
 	function checkIt() {
@@ -30,20 +26,20 @@
 						<h2>회원정보 수정</h2>
 					</div>
 
-					<form action="updatePro.jsp" method="post" onsubmit="return checkIt()"
+					<form action="${ctxPath}/libido/memUpdate.do" method="post" onsubmit="return checkIt()"
 						  name="inputForm">
 						<div class="row">
 							<div class="col-md-6 mb-3">
-								<input type="text" class="form-control" name="name" value="<%= member.getName() %>"
+								<input type="text" class="form-control" name="name" value="${member.name }"
 									placeholder="이름" disabled>
 							</div>
 							<div class="col-md-6 mb-3">
-								<input type="text" class="form-control" name="birth" value="<%= member.getBirth() %>"
+								<input type="text" class="form-control" name="birth" value="${member.birth }"
 									placeholder="생년월일" disabled>
 							</div>
 							<div class="col-12 mb-3">
 								<input type="text" class="form-control" name="id"
-									placeholder="아이디" value="<%= member.getId() %>" disabled>
+									placeholder="아이디" value="${member.id }" disabled>
 							</div>
 							<div class="col-md-6 mb-3">
 								<input type="password" class="form-control" name="password" value=""
@@ -55,10 +51,11 @@
 							</div>
 							<div class="col-12 mb-3">
 								<input type="email" class="form-control" name="email"
-									placeholder="E-mail" value="<%= member.getEmail() %>">
+									placeholder="E-mail" value="${member.email }">
 							</div>
 							<div class="col-md-4 mb-3">
 								<select class="w-100" name="tel1">
+									<option id="t1" value="${member.tel1 }" selected="selected">${member.tel1 }</option>
 									<option value="010">010</option>
 									<option value="011">011</option>
 									<option value="016">016</option>
@@ -69,23 +66,23 @@
 							</div>
 							<div class="col-md-4 mb-3">
 								<input type="text" class="form-control" name="tel2"
-									placeholder=" " value="<%= member.getTel2() %>">
+									placeholder=" " value="${member.tel2 }">
 							</div>
 							<div class="col-md-4 mb-3">
 								<input type="text" class="form-control" name="tel3"
-									placeholder=" " value="<%= member.getTel3() %>">
+									placeholder=" " value="${member.tel3 }">
 							</div>
 							<div class="col-12 mb-3">
 								<input type="text" class="form-control" name="address1"
-									placeholder="도, 시 , 구" value="<%= member.getAddress1() %>">
+									placeholder="도, 시 , 구" value="${member.address1 }">
 							</div>
 							<div class="col-12 mb-3">
 								<input type="text" class="form-control" name="address2"
-									placeholder="상세 주소" value="<%= member.getAddress2() %>">
+									placeholder="상세 주소" value="${member.address2 }">
 							</div>
 							<div class="col-12 mb-3">
 								<input type="text" class="form-control" name="zipcode"
-									placeholder="우편번호" value="<%= member.getZipcode() %>">
+									placeholder="우편번호" value="${member.zipcode }">
 							</div>
 							<div class="col-12 mb-3">
 								<hr>
@@ -95,7 +92,7 @@
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="button" value="수정취소"
-									   onclick="javascript:window.location='loginForm2.jsp'">
+									   onclick="location.href='${ctxPath}/libido/login.do'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">

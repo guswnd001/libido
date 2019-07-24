@@ -39,11 +39,8 @@
 							</li>
 						</ol>
 						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<a class="gallery_img" href="../img/product-img/pro-big-1.jpg">
-									<img class="d-block w-100" src="../img/product-img/pro-big-1.jpg"
-									alt="First slide">
-								</a>
+							<div class="carousel-item active" 
+								 style="width: 600px; height: 700; background-color: E7E7E7;">
 							</div>
 							<div class="carousel-item">
 								<a class="gallery_img" href="../img/product-img/pro-big-2.jpg">

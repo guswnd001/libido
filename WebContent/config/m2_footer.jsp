@@ -6,7 +6,7 @@
 		var url = document.location.href.split("/");
 		console.log(url);
 		
-		if (url[url.length-1] == "sale.jsp") {
+		if (url[url.length-1] == "sale.do") {
 			var str = "";
 			str += "<div>";
 			str += "<div style='position: absolute; z-index: 20; width: 50%; right: 0; text-align: center; top: auto; margin-top: 6%; margin-right: 3%;'>";
@@ -18,7 +18,7 @@
 			str += "할인";
 			str += "</h2>";
 			str += "</div>";
-			str += "<video src='../video/video-ld.mp4' width='100%' muted height='initial' autoplay loop style='position: relative;'></video>";
+			str += "<video src='${ctxPath}/amado/video/video-ld.mp4' width='100%' muted height='initial' autoplay loop style='position: relative;'></video>";
 			str += "</div>";
 			
 			document.getElementById("inHere").innerHTML = str;
@@ -129,7 +129,8 @@
     <script src="${ctxPath}/amado/js/plugins.js"></script>
     <!-- Active js -->
     <script src="${ctxPath}/amado/js/active.js"></script>
-
+	
+	
 </body>
 
 </html>

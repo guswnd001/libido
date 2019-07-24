@@ -82,7 +82,7 @@
 <c:forEach var="i" begin="${startPage}" end="${endPage}">
 	<c:if test="${i < 10}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">${ "0" + i}.</a>
+		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">0${i}.</a>
 	</li>
 	</c:if>
 	<c:if test="${i >= 10}">

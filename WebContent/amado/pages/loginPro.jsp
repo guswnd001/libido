@@ -33,6 +33,12 @@
 	location.href = "<%=request.getContextPath()%>/libido/login.do";
 </script>
 </c:if>
+<c:if test="${errors.invaildId }">
+<script>
+	alert("존재하지 않는 아이디입니다.")
+	location.href = "<%=request.getContextPath()%>/libido/login.do";
+</script>
+</c:if>
 
 </body>
 </html>

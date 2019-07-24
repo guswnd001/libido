@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import dao.MemberDao;
+import exception.InvalidIdException;
 import exception.LoginFailException;
 import jdbc.ConnectionProvider;
 import model.Member;
@@ -17,7 +18,7 @@ public class LoginService {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			Member member = memberDao.selectById(conn, id);
 			
-			if (member == null) { throw new LoginFailException(); }
+			if (member == null) { throw new InvalidIdException(); } 
 			
 			if (!member.matchPassword(password)) { throw new LoginFailException(); }
 			

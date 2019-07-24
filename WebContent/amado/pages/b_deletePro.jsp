@@ -1,6 +1,7 @@
 <%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,31 +10,19 @@
 </head>
 <body>
 
-<%
-	int num = Integer.parseInt(request.getParameter("num"));
-	String pageNum = request.getParameter("pageNum");
-	String passwd = request.getParameter("passwd");
-	
-	BoardDao board = BoardDao.getInstance(); 
-	int check = board.deleteArticle(num, passwd);
-%>
-
-<%
-	if (check == 1) {
-%>
+<c:if test="${check == 1 }">
 	<script>
 		alert("게시글이 삭제되었습니다.");
-		location.href = "<%= request.getContextPath() %>/amado/pages/b_list.jsp?pageNum=<%=pageNum%>";
+		location.href = "<%= request.getContextPath() %>/libido/list.do?pageNum=${pageNum}";
 	</script>
 	<%-- <meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>"> --%>	
-<%
-	} else {
-%>
+</c:if>
+<c:if test="${check < 1 }">
 	<script>
 		alert("비밀번호가 맞지 않습니다.");
-		history.go(-1);
+		location.href = "<%= request.getContextPath() %>/libido/delete.do?num=${num}&pageNum=${pageNum}";
 	</script>
-<%	} %>
+</c:if>
 
 </body>
 </html>

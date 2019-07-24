@@ -147,42 +147,18 @@
 			</div>
 		</div>
 		
-<%
-	ProductDao dbPro = ProductDao.getInstance();
-
-	String pageNum = request.getParameter("pageNum");
-	if (pageNum == null || pageNum == "") {
-		pageNum = "1";
-	}
-
-	session.setAttribute("pageNum", pageNum);
-
-	int currentPage = Integer.parseInt(pageNum);
-	int pageSize = 6;
-	int aCount = dbPro.getProductCount(); 
-	int startRow = (currentPage - 1) * pageSize;
-	int endRow = currentPage * pageSize;
-	int number = aCount - startRow;
-	List productList = dbPro.getProducts(startRow, pageSize);
-
-	if (aCount < endRow) { endRow = aCount; }
-%>
-
 		<div class="row">
-<% 	
-	DecimalFormat df = new DecimalFormat("#,###"); 
-	for (int i = 0; i < productList.size(); i++) {
-		Product product = (Product)productList.get(i);
-%>
-
+		<c:forEach var="product" items="${productList }">
 			<!-- Single Product Area -->
 			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
 				<div class="single-product-wrapper">
 					<!-- Product Image -->
 					<div class="product-img">
-						<img src="../img/product-img/<%=product.getPhoto1()%>.jpg" alt="">
+						<a href="${ctxPath}/libido/productDetails.do?code=${product.code}">
+						<img src="${ctxPath}/amado/img/product-img/${product.photo1 }.jpg" alt="">
 						<!-- Hover Thumb -->
-						<img class="hover-img" src="../img/product-img/<%=product.getPhoto2()%>.jpg" alt="">
+						<img class="hover-img" src="${ctxPath}/amado/img/product-img/${product.photo2 }.jpg" alt="">
+						</a>
 					</div>
 
 					<!-- Product Description -->
@@ -191,9 +167,9 @@
 						<!-- Product Meta Data -->
 						<div class="product-meta-data">
 							<div class="line"></div>
-							<p class="product-price">&#8361;<%=df.format(product.getPrice()) %></p>
+							<p class="product-price">&#8361;${df.format(product.price) }</p>
 							<a href="product-details.html">
-								<h6><%=product.getPname()%></h6>
+								<h6>${product.pname }</h6>
 							</a>
 						</div>
 						<!-- Ratings & Cart -->
@@ -213,47 +189,39 @@
 					</div>
 				</div>
 			</div>
+		</c:forEach>
 			
-<% 
-	} 
-%>
 			
 		</div>
-<%
-	int bottomLine = 4;
-	int pageCount = aCount / pageSize + (aCount % pageSize == 0? 0 : 1); //2
-	int startPage = 1 + (currentPage - 1) / bottomLine * bottomLine; //1
-	int endPage = startPage + bottomLine - 1; //3
-	if (pageCount < endPage) endPage = pageCount;
-%>
 		<div class="row">
 			<div class="col-12">
 				<!-- Pagination -->
 				<nav aria-label="navigation">
 					<ul class="pagination justify-content-end mt-50">
-<% for (int i = startPage; i <= endPage; i++) { %> 
-	<%-- <a href="b_list.jsp?pageNum=<%= i %>">[<%= i %>]</a> --%>
-<% if ( i < 10) { %>
+					
+<c:forEach var="i" begin="${startPage }" end="${endPage }">
+<c:if test="${i < 10 }">
 	<li name="page" class="page-item">
-		<a class="page-link" href="shop.jsp?pageNum=<%= i %>"><%= "0" + i %>.</a>
+		<a class="page-link" href="shop.jsp?pageNum=${i }">0${i }.</a>
 	</li>
-<% } else { %>
+</c:if>
+<c:if test="${i >= 10 }">
 	<li name="page" class="page-item">
-		<a class="page-link" href="shop.jsp?pageNum=<%= i %>"><%= i %>.</a>
+		<a class="page-link" href="shop.jsp?pageNum=${i }">${i }.</a>
 	</li>
-<% } %>
-<% } %>
+</c:if>
+</c:forEach>
 					</ul>
 <script>
 	var liTag = document.getElementsByName("page");
 	
 	
-	if (<%=currentPage%> == null || <%=currentPage%> == "") {
+	if (${currentPage == null} || ${currentPage == ""}) {
 	   	liTag[0].className += " active";
-	} else if (<%=currentPage%> > <%=bottomLine%>) {
-	   	liTag[<%=(currentPage - bottomLine)%>].className += " active"; 
+	} else if (${currentPage > bottomLine}) {
+	   	liTag[${currentPage - bottomLine}].className += " active"; 
 	} else {
-	   	liTag[<%=(currentPage - 1)%>].className += " active"; 
+	   	liTag[${currentPage - 1}].className += " active"; 
 	}
 </script>
 				</nav>

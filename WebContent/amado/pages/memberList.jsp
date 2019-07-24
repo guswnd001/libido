@@ -4,14 +4,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
-	request.setCharacterEncoding("utf-8");
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-	MemberDao manager = new MemberDao();
-	
-	List<Member> li = manager.getMemberList();
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <div class="cart-table-area-3 section-padding-100">
 	<div class="container-fluid">
@@ -25,6 +18,7 @@
 					<table class="table" style="position: absolute; white-space: nowrap; overflow: hidden;">
 						<thead style="background-color: F5F7FA;">
 							<tr style="font-size: 12px;">
+								<th style="border: none;">&nbsp;번호</th>
 								<th style="border: none;">&nbsp;ID</th>
 								<th style="border: none;">&nbsp;이름</th>
 								<th style="border: none;">&nbsp;E-mail</th>
@@ -35,22 +29,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<%
-								for (int i = 0; i < li.size(); i++) {
-									Member member = li.get(i);									
-							%>
+							<c:forEach var="member" items="${memberList }" varStatus="status">
 							<tr>
-								<td style="border: none;">&nbsp;<%= member.getId() %></td>
-								<td style="border: none;">&nbsp;<%= member.getName() %></td>
-								<td style="border: none;">&nbsp;<%= member.getEmail() %></td>
-								<td style="border: none;">&nbsp;<%= member.getTel1() + "-" + member.getTel2() + "-" + member.getTel3() %></td>
-								<td style="border: none;">&nbsp;<%= member.getAddress1() + " " + member.getAddress2() %></td>
-								<td style="border: none;">&nbsp;<%= member.getZipcode() %></td>
-								<td style="border: none;">&nbsp;<%= sdf.format(member.getReg_date()) %></td>
+								<td style="border: none;">&nbsp;${status.count }</td>
+								<td style="border: none;">&nbsp;${member.id }</td>
+								<td style="border: none;">&nbsp;${member.name }</td>
+								<td style="border: none;">&nbsp;${member.email }</td>
+								<td style="border: none;">&nbsp;${member.tel1 } - ${member.tel2} - ${member.tel3 }</td>
+								<td style="border: none;">&nbsp;${member.address1} ${member.address2}</td>
+								<td style="border: none;">&nbsp;${member.zipcode}</td>
+								<td style="border: none;">&nbsp;${sdf.format(member.reg_date) }</td>
 							</tr>
-							<%
-								}
-							%>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

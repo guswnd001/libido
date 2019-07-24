@@ -99,12 +99,12 @@
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;">
 								<input class="btn amado-btn" type="reset" value="정보수정"
-									   onclick="location.href='${ctxPath}/libido/update.do'">
+									   onclick="location.href='${ctxPath}/libido/memUpdate.do'">
 							</div>
 							<div class="col-md-3 cart-btn" 
 								 style="float: right; margin-right: 40px;'">
 								<input class="btn amado-btn" type="button" value="회원탈퇴"
-									   onclick="location.href='${ctxPath}/libido/delete.do'">
+									   onclick="location.href='${ctxPath}/libido/memDelete.do'">
 							</div>
 						</div>
 					</form>

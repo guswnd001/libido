@@ -322,6 +322,22 @@ img {
     color: #ffffff;
     background-color: #131212; }
 
+.amado-btn2 {
+  display: inline-block;
+  min-width: 100px;
+  height: 55px;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  padding: 0 7px;
+  font-size: 18px;
+  line-height: 15px;
+  background-color: #fbb710;
+  font-weight: 400; }
+  .amado-btn2.active, .amado-btn2:hover, .amado-btn2:focus {
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #131212; }
 /* :: 4.0 Search Wrapper Area CSS */
 .search-wrapper {
   position: fixed;
@@ -373,7 +389,57 @@ img {
     background-color: #fbb710; }
     .search-wrapper .search-close:hover {
       background-color: #131212; }
-
+/* :: 4.0 Favorite Wrapper Area CSS */
+.fav-wrapper {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 260px;
+  z-index: 5000;
+  top: -350px;
+  left: 0;
+  background-color: #f5f7fa;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms; }
+  .fav-wrapper .fav-content form {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.075); }
+    .fav-wrapper .fav-content form input {
+      width: 100%;
+      height: 60px;
+      border: none;
+      padding-left: 50px;
+      font-size: 14px;
+      color: #6b6b6b; }
+    .fav-wrapper .fav-content form button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      width: 50px;
+      height: 60px;
+      z-index: 10;
+      cursor: pointer;
+      background-color: transparent;
+      text-align: center; }
+  .fav-wrapper .fav-close {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    text-align: center;
+    color: #fff;
+    line-height: 40px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #fbb710; }
+    .fav-wrapper .fav-close:hover {
+      background-color: #131212; }
 /* :: 5.0 Welcome Area CSS */
 .main-content-wrapper {
   position: relative;
@@ -484,7 +550,7 @@ img {
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .main-content-wrapper .header-area .amado-nav li.active a::after {
           left: -50px; } }
-    .main-content-wrapper .header-area .amado-btn-group .amado-btn {
+    .main-content-wrapper .header-area .amado-btn-group .amado-btn .amado-btn2 {
       width: 160px;
       display: block; }
     .main-content-wrapper .header-area .cart-fav-search a {
@@ -976,6 +1042,11 @@ img {
 .search-wrapper-on .search-wrapper {
   top: 0; }
 .search-wrapper-on .main-content-wrapper {
+  margin-top: 260px; }
+  
+.fav-wrapper-on .fav-wrapper {
+  top: 0; }
+.fav-wrapper-on .main-content-wrapper {
   margin-top: 260px; }
 
 .single-products-catagory {

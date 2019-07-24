@@ -4,13 +4,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<%
-	String id = (String)session.getAttribute("memId"); //session은 로그인되어서 저장되어 있는 정보
-	MemberDao manager = new MemberDao();
-	
-	Member member = manager.getMember(id); 
-%>
-
 <div class="cart-table-area section-padding-100">
 	<div class="container-fluid">
 		<div class="row">
@@ -20,12 +13,12 @@
 						<h2>회원 탈퇴</h2>
 					</div>
 
-					<form action="deletePro.jsp" method="post" onsubmit="return checkIt()"
+					<form action="${ctxPath}/libido/memDelete.do" method="post" onsubmit="return checkIt()"
 						  name="deleteForm">
 						<div class="row">
 							<div class="col-12 mb-3">
 								<input type="text" class="form-control" name="id"
-									placeholder="아이디" value="<%=member.getId() %>" disabled>
+									placeholder="아이디" value="${authUser.id }" disabled>
 							</div>
 							<div class="col-md-12 mb-3">
 								<input type="password" class="form-control" name="password" value=""

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Board;
 import model.Product;
 
 
@@ -155,6 +156,54 @@ public class ProductDao {
 		}
 		
 		return x;
+	}
+	
+	public Product getProduct(String code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Product product = null;
+		
+		try {
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement(
+					"select * from PRODUCT_LIBIDO where code = ?");
+			pstmt.setString(1, code);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				product = new Product();
+				product.setNum(rs.getInt("num"));
+				product.setSeason(rs.getString("season"));
+				product.setPkind(rs.getString("pkind"));
+				product.setBrand(rs.getString("brand"));
+				product.setCode(code);
+				product.setColor(rs.getString("color"));
+				product.setPname(rs.getString("pname"));
+				product.setSex(rs.getString("sex"));
+				product.setPrice(rs.getInt("price"));
+				product.setCartcount(rs.getInt("cartCount"));
+				product.setReadcount(rs.getInt("readCount"));
+				product.setSellqty(rs.getInt("sellqty"));
+				product.setStock(rs.getInt("stock"));
+				product.setPhoto1(rs.getString("photo1"));
+				product.setPhoto2(rs.getString("photo2"));
+				product.setPhoto3(rs.getString("photo3"));
+				product.setPhoto4(rs.getString("photo4"));
+				product.setPhoto5(rs.getString("photo5"));
+				product.setReg_date(rs.getTimestamp("reg_date"));
+				product.setSale(rs.getString("sale"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return product;
 	}
 	
 }
