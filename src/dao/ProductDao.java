@@ -132,6 +132,178 @@ public class ProductDao {
 		return li;
 	}
 	
+	public List<Product> getProducts(int start, int pageSize, int sale) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Product> li = null;
+		Product product = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from PRODUCT_LIBIDO where sale = ? "
+					+ "order by num desc "
+					+ "limit ?, ?");
+			pstmt.setInt(1, sale);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, pageSize);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				li = new ArrayList<Product>(); // array : 중복 허용/ set : 중복 불가
+				do {
+					product = new Product();
+					product.setNum(rs.getInt("num"));
+					product.setSeason(rs.getString("season"));
+					product.setPkind(rs.getString("pkind"));
+					product.setBrand(rs.getString("brand"));
+					product.setCode(rs.getString("code"));
+					product.setColor(rs.getString("color"));
+					product.setPname(rs.getString("pname"));
+					product.setSex(rs.getString("sex"));
+					product.setPrice(rs.getInt("price"));
+					product.setCartcount(rs.getInt("cartCount"));
+					product.setReadcount(rs.getInt("readCount"));
+					product.setSellqty(rs.getInt("sellqty"));
+					product.setStock(rs.getInt("stock"));
+					product.setPhoto1(rs.getString("photo1"));
+					product.setPhoto2(rs.getString("photo2"));
+					product.setPhoto3(rs.getString("photo3"));
+					product.setPhoto4(rs.getString("photo4"));
+					product.setPhoto5(rs.getString("photo5"));
+					product.setReg_date(rs.getTimestamp("reg_date"));
+					
+					li.add(product);
+				} while (rs.next());
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return li;
+	}
+	
+	public List<Product> getProducts(int start, int pageSize, String pkind) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Product> li = null;
+		Product product = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from PRODUCT_LIBIDO where pkind = ? "
+					+ "order by num desc "
+					+ "limit ?, ?");
+			pstmt.setString(1, pkind);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, pageSize);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				li = new ArrayList<Product>(); // array : 중복 허용/ set : 중복 불가
+				do {
+					product = new Product();
+					product.setNum(rs.getInt("num"));
+					product.setSeason(rs.getString("season"));
+					product.setPkind(rs.getString("pkind"));
+					product.setBrand(rs.getString("brand"));
+					product.setCode(rs.getString("code"));
+					product.setColor(rs.getString("color"));
+					product.setPname(rs.getString("pname"));
+					product.setSex(rs.getString("sex"));
+					product.setPrice(rs.getInt("price"));
+					product.setCartcount(rs.getInt("cartCount"));
+					product.setReadcount(rs.getInt("readCount"));
+					product.setSellqty(rs.getInt("sellqty"));
+					product.setStock(rs.getInt("stock"));
+					product.setPhoto1(rs.getString("photo1"));
+					product.setPhoto2(rs.getString("photo2"));
+					product.setPhoto3(rs.getString("photo3"));
+					product.setPhoto4(rs.getString("photo4"));
+					product.setPhoto5(rs.getString("photo5"));
+					product.setReg_date(rs.getTimestamp("reg_date"));
+					
+					li.add(product);
+				} while (rs.next());
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return li;
+	}
+	
+	public List<Product> getProducts(int start, int pageSize, String pkind, int sale) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Product> li = null;
+		Product product = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from PRODUCT_LIBIDO where pkind = ? and sale = ?"
+					+ "order by num desc "
+					+ "limit ?, ?");
+			pstmt.setString(1, pkind);
+			pstmt.setInt(2, sale);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, pageSize);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				li = new ArrayList<Product>(); // array : 중복 허용/ set : 중복 불가
+				do {
+					product = new Product();
+					product.setNum(rs.getInt("num"));
+					product.setSeason(rs.getString("season"));
+					product.setPkind(rs.getString("pkind"));
+					product.setBrand(rs.getString("brand"));
+					product.setCode(rs.getString("code"));
+					product.setColor(rs.getString("color"));
+					product.setPname(rs.getString("pname"));
+					product.setSex(rs.getString("sex"));
+					product.setPrice(rs.getInt("price"));
+					product.setCartcount(rs.getInt("cartCount"));
+					product.setReadcount(rs.getInt("readCount"));
+					product.setSellqty(rs.getInt("sellqty"));
+					product.setStock(rs.getInt("stock"));
+					product.setPhoto1(rs.getString("photo1"));
+					product.setPhoto2(rs.getString("photo2"));
+					product.setPhoto3(rs.getString("photo3"));
+					product.setPhoto4(rs.getString("photo4"));
+					product.setPhoto5(rs.getString("photo5"));
+					product.setReg_date(rs.getTimestamp("reg_date"));
+					
+					li.add(product);
+				} while (rs.next());
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return li;
+	}
+	
 	public int getProductCount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -142,6 +314,91 @@ public class ProductDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
 					"select ifnull(count(*), 0) from PRODUCT_LIBIDO");
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				x = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return x;
+	}
+	
+	public int getProductCount(int sale) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select ifnull(count(*), 0) from PRODUCT_LIBIDO "
+					+ "where sale = ?");
+			pstmt.setInt(1, sale);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				x = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return x;
+	}
+	
+	public int getProductCount(String pkind) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select ifnull(count(*), 0) from PRODUCT_LIBIDO "
+					+ "where pkind = ?");
+			pstmt.setString(1, pkind);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				x = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException ex) { }
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+		
+		return x;
+	}
+	
+	public int getProductCount(String pkind, int sale) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select ifnull(count(*), 0) from PRODUCT_LIBIDO "
+					+ "where pkind = ? and sale = ?");
+			pstmt.setString(1, pkind);
+			pstmt.setInt(2, sale);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -204,6 +461,42 @@ public class ProductDao {
 		}
 		
 		return product;
+	}
+	
+	public void addToSale(String code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"update PRODUCT_LIBIDO set sale = 1 where code = ?");
+			pstmt.setString(1, code);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
+	}
+	
+	public void deleteAtSale(String code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"update PRODUCT_LIBIDO set sale = 0 where code = ?");
+			pstmt.setString(1, code);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { }
+			if (conn != null) try { conn.close(); } catch (SQLException ex) { }
+		}
 	}
 	
 }

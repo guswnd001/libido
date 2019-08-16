@@ -45,23 +45,9 @@ ${ctxPath = pageContext.request.contextPath; ''}
 							</div>
 							<div>
 								<input class="btn amado-btn" type="button" value="중복확인"
-									   id="idCheckBtn"> 
+									   id="idCheckBtn" style="min-width: 235px;"> 
 							</div>
 							 
-							<%
-								MemberDao handler = new MemberDao();
-								List li = null;
-								li = handler.getId(); 
-								StringBuffer values = new StringBuffer();
-
-								for(int i=0; i<li.size(); i++) {
-									if(values.length()>0) {
-										values.append(',');
-									}
-									values.append('"').append(li.get(i)).append('"');
-								}
-							%>
-							
 							<div id="idCheckModal" class="modal">
 								<div class="modal-content" style="width: 25%;">
 									<!-- <span class="close" style="text-align: right;">&times;</span> -->
@@ -86,9 +72,9 @@ ${ctxPath = pageContext.request.contextPath; ''}
 					        		
 					        		modal.style.display = "block";
 					        		
-					        		var list = [<%=values.toString()%>];
+					        		var list = [${existId}];
 					        		console.log(typeof(list));
-					        		var id = document.getElementById('userId').value;
+					        		var id = document.getElementById('id').value;
 					        		var check = true;
 					        		var mmsg = document.getElementById("msg");
 					        		
@@ -101,7 +87,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 					        			return;
 					        		} else {
 					        			for (var i = 0; i < list.length; i++) {
-					        				/* console.log(list[i]); */
+					        				console.log(list[i]);
 					        				if (id == list[i]){	check = false;	break; }
 					        			}
 									}

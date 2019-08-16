@@ -9,15 +9,14 @@ import exception.LoginFailException;
 import jdbc.ConnectionProvider;
 import model.Member;
 import model.User;
-import session.MemberSessionRepository;
 
-public class LoginService {
+public class LoginService2 {
 
-	private static MemberSessionRepository msr = new MemberSessionRepository();
+	private static MemberDao memberDao = new MemberDao();
 	
 	public static User login(String id, String password) {
 		try (Connection conn = ConnectionProvider.getConnection()) {
-			Member member = msr.selectById(id);
+			Member member = memberDao.selectById(conn, id);
 			
 			if (member == null) { throw new InvalidIdException(); } 
 			

@@ -195,7 +195,7 @@ public class Product {
 				+ ", color=" + color + ", pname=" + pname + ", sex=" + sex + ", price=" + price + ", cartcount="
 				+ cartcount + ", readcount=" + readcount + ", sellqty=" + sellqty + ", stock=" + stock + ", photo1="
 				+ photo1 + ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + ", photo5=" + photo5
-				+ ", reg_date=" + reg_date + ", sale=" + sale + "]";
+				+ ", reg_date=" + reg_date + ", sale=" + sale + "]\n";
 	}
 	
 	

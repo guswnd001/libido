@@ -23,7 +23,19 @@
     
     <link rel="stylesheet" href="<%= request.getContextPath() %>/amado/css/core-style.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/amado/style.css">
-
+	
+	
+	<style>
+		div.coodi {
+			width: 125px;
+			height: 150px;
+			margin: 10px;
+			padding: 15 20 20 20;
+			border: 2px solid #fbb710;
+			float: left;
+		}
+	
+	</style>
 
 </head>
 <body>
@@ -97,7 +109,7 @@
 	<nav class="amado-nav">
 		<ul>
 		<c:if test="${authUser != null}">
-			<li><b>${authUser.id}</b>님,<br>&nbsp;&nbsp;어서 와, 반갑다구~</li>
+			<li><b>${authUser.id}</b>님,<br>&nbsp;&nbsp;반갑습니다.</li>
 		</c:if>
 			<li><a name="a" href="${ctxPath}/libido/index.do">홈</a></li>
 			<li><a name="a" href="${ctxPath}/libido/shop.do">디자이너</a></li>
@@ -228,7 +240,7 @@
         textarea.innerHTML += "<div  class='w3-yellow w3-border "
         + "w3-round-large w3-padding-small' "
         + "id='me' style='width:"
-        + ((inputMessage.value.length*12)+30)+"px;'>나: " 
+        + ((inputMessage.value.length*12)+45)+"px;'>나: " 
         + inputMessage.value 
         + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br>";
         

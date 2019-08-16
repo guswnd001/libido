@@ -1,6 +1,5 @@
-/model/
-/controller/
-/handler/
+/session/
+/mybatis/
+/mapper/
 /service/
-/dao/
-/exception/
+/filter/

@@ -72,7 +72,7 @@
 					<!-- Product Meta Data -->
 					<div class="product-meta-data">
 						<div class="line"></div>
-						<p class="product-price">&#8361; ${df.format(product.price) }</p>
+						<p class="product-price">&#8361;<del>${df.format(product.price) }</del>&nbsp;&nbsp;${df.format(product.price * 0.9) }(-10%)</p>
 						<a href="product-details.jsp">
 							<h6>${product.pname }</h6>
 						</a>
@@ -89,7 +89,7 @@
 							<div class="review">
 								<a href="#">Write A Review</a>
 							<c:if test="${authUser != null && authUser.id eq 'admin'}">
-								<br><a href="${ctxPath }/libido/addToSale.do?code=${product.code}">Add To Sale</a>
+								<br><a href="${ctxPath }/libido/deleteAtSale.do?code=${product.code}">Delete At Sale</a>
 							</c:if>
 							</div>
 						</div>

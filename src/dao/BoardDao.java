@@ -319,6 +319,8 @@ public class BoardDao {
 					x = 0; //비밀번호가 같지 않을때 
 				}
 			}
+			
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

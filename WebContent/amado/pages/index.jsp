@@ -8,7 +8,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model1.png" alt=""> 
+			<a href="${ctxPath}/libido/shop.do?pkind=hatCap"> <img src="${ctxPath}/amado/img/bg-img/model1.png" alt=""> 
 				<!-- Hover Content -->
 				<div class="hover-content">
 					<div class="line"></div>
@@ -20,7 +20,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model11.jpg" alt=""> 
+			<a href="${ctxPath}/libido/shop.do?pkind=poloshirts"> <img src="${ctxPath}/amado/img/bg-img/model11.jpg" alt=""> 
 				<!-- Hover Content -->
 				<div class="hover-content" style="padding-top: 120%;">
 					<div class="line"></div>
@@ -32,7 +32,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model3.jpg" alt=""> 
+			<a href="${ctxPath}/libido/shop.do?pkind=tshirts"> <img src="${ctxPath}/amado/img/bg-img/model3.jpg" alt=""> 
 				<!-- Hover Content -->
 				<div class="hover-content" style="padding-top: 70%;">
 					<div class="line"></div>
@@ -68,7 +68,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model8.jpg" alt=""> 
+			<a href="${ctxPath}/libido/shop.do?pkind=shoes"> <img src="${ctxPath}/amado/img/bg-img/model8.jpg" alt=""> 
 				<!-- Hover Content -->
 				<div class="hover-content">
 					<div class="line"></div>
@@ -80,7 +80,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model7_4.png" alt="">
+			<a href="${ctxPath}/libido/shop.do?pkind=new"> <img src="${ctxPath}/amado/img/bg-img/model7_4.png" alt="">
 				<!-- Hover Content -->
 				<div class="hover-content"  style="padding-top: 100%;">
 					<div class="line"></div>
@@ -92,7 +92,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model6.jpg" alt=""> 
+			<a href="${ctxPath}/libido/shop.do?pkind=shirts"> <img src="${ctxPath}/amado/img/bg-img/model6.jpg" alt=""> 
 				<!-- Hover Content -->
 				<div class="hover-content" style="padding-top: 100%;">
 					<div class="line"></div>
@@ -104,7 +104,7 @@ ${ctxPath = pageContext.request.contextPath; ''}
 
 		<!-- Single Catagory -->
 		<div class="single-products-catagory clearfix">
-			<a href="${ctxPath}/amado/pages/shop.jsp"> <img src="${ctxPath}/amado/img/bg-img/model12.png" alt=""> 
+			<a href="${ctxPath}/libido/shop.do?pkind=bags"> <img src="${ctxPath}/amado/img/bg-img/model12.png" alt=""> 
 				<!-- Hover Content -->
 				<div class="hover-content">
 					<div class="line"></div>

@@ -72,29 +72,34 @@
 <div class="row">
 	<div class="col-12">
 				<nav aria-label="navigation">
+				
 <ul class="pagination justify-content-end mt-10">
 <c:if test="${startPage > bottomLine}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${startPage - bottomLine}">prev.</a>
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/list.do?pageNum=${startPage - bottomLine}">prev.</a>
 	</li>
 </c:if>
 
 <c:forEach var="i" begin="${startPage}" end="${endPage}">
 	<c:if test="${i < 10}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">0${i}.</a>
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">0${i}.</a>
 	</li>
 	</c:if>
 	<c:if test="${i >= 10}">
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">${i}.</a>
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/list.do?pageNum=${i}">${i}.</a>
 	</li>
 	</c:if>
 </c:forEach>
 
 <c:if test="${endPage < pageCount}">	
 	<li name="page" class="page-item">
-		<a class="page-link" href="<%=request.getContextPath() %>/libido/list.do?pageNum=${startPage + bottomLine}">next.</a>
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/list.do?pageNum=${startPage + bottomLine}">next.</a>
 	</li>
 </c:if>
 </ul>

@@ -8,11 +8,11 @@
 			<div class="col-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb mt-50">
-						<li class="breadcrumb-item"><a href="${ctxPath}/libido/index.do">홈</a></li>
-						<li class="breadcrumb-item"><a href="${ctxPath}/libido/shop.do">디자이너</a></li>
-						<li class="breadcrumb-item"><a href="#">${product.brand }</a></li>
-						<li class="breadcrumb-item"><a href="#">${product.pkind }</a></li>
-						<li class="breadcrumb-item active" aria-current="page">${product.pname }</li>
+						<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item"><a href="#">Furniture</a></li>
+						<li class="breadcrumb-item"><a href="#">Chairs</a></li>
+						<li class="breadcrumb-item active" aria-current="page">white
+							modern chair</li>
 					</ol>
 				</nav>
 			</div>
@@ -21,45 +21,51 @@
 		<div class="row">
 			<div class="col-12 col-lg-7">
 				<div class="single_product_thumb">
-					<div id="product_details_slider" class="carousel slide"
-						data-ride="carousel">
+					<div id="product_details_slider" class="carousel slide"	>
 						<ol class="carousel-indicators">
-							<li class="active" data-target="#product_details_slider"
-								data-slide-to="0"
-								style="background-image: url(${ctxPath}/amado/img/product-img/${product.photo1 }.jpg);">
+							<li data-target="#product_details_slider" data-slide-to="0"
+								style="background-image: url(${ctxPath }/amado/img/coodiBook-img/tmu3-1.jpg);
+									   border: 2px solid #fbb710;">
 							</li>
 							<li data-target="#product_details_slider" data-slide-to="1"
-								style="background-image: url(${ctxPath}/amado/img/product-img/${product.photo2 }.jpg);">
+								style="background-image: url(${ctxPath }/amado/img/coodiBook-img/add1-1.jpg);
+									   border: 2px solid #fbb710;">
 							</li>
 							<li data-target="#product_details_slider" data-slide-to="2"
-								style="background-image: url(${ctxPath}/amado/img/product-img/${product.photo3 }.jpg);">
+								style="background-image: url(../img/product-img/pro-big-3.jpg);
+									   border: 2px solid #fbb710;">
 							</li>
 							<li data-target="#product_details_slider" data-slide-to="3"
-								style="background-image: url(${ctxPath}/amado/img/product-img/${product.photo4 }.jpg);">
+								style="background-image: url(../img/product-img/pro-big-4.jpg);
+									   border: 2px solid #fbb710;">
 							</li>
 						</ol>
-						<div class="carousel-inner">
+						<div class="carousel-inner" 
+							 style="position: relative; width: 600px; height: 700px;
+							 		background-image: url(${ctxPath }/amado/img/coodiBook-img/background_cb.png);">
+							<%-- <img class="d-block w-100" src="${ctxPath }/amado/img/core-img/background_cb.png"
+								 style="position: relative; width: 600px; height: 700px;"> --%>
 							<div class="carousel-item active">
-								<a class="gallery_img" href="${ctxPath}/amado/img/product-img/${product.photo1 }.jpg">
-									<img class="d-block w-100" src="${ctxPath}/amado/img/product-img/${product.photo1 }.jpg"
-									alt="First slide">
+								 <a class="gallery_img" href="${ctxPath }/amado/img/coodiBook-img/tmu3-1.jpg">
+									<img class="d-block w-100" src="${ctxPath }/amado/img/coodiBook-img/tmu3-1.jpg"
+									alt="First slide" style="position: absolute; z-index: 1">
 								</a>
 							</div>
 							<div class="carousel-item">
-								<a class="gallery_img" href="${ctxPath}/amado/img/product-img/${product.photo2 }.jpg">
-									<img class="d-block w-100" src="${ctxPath}/amado/img/product-img/${product.photo2 }.jpg"
-									alt="Second slide">
+								<a class="gallery_img" href="${ctxPath }/amado/img/coodiBook-img/add1-1.jpg">
+									<img class="d-block w-100" src="${ctxPath }/amado/img/coodiBook-img/add1-1.jpg"
+									alt="Second slide" style="position: absolute; z-index: 1">
 								</a>
 							</div>
 							<div class="carousel-item">
-								<a class="gallery_img" href="${ctxPath}/amado/img/product-img/${product.photo3 }.jpg">
-									<img class="d-block w-100" src="${ctxPath}/amado/img/product-img/${product.photo3 }.jpg"
+								<a class="gallery_img" href="../img/product-img/pro-big-3.jpg">
+									<img class="d-block w-100" src="../img/product-img/pro-big-3.jpg"
 									alt="Third slide">
 								</a>
 							</div>
 							<div class="carousel-item">
-								<a class="gallery_img" href="${ctxPath}/amado/img/product-img/${product.photo4 }.jpg">
-									<img class="d-block w-100" src="${ctxPath}/amado/img/product-img/${product.photo4 }.jpg"
+								<a class="gallery_img" href="../img/product-img/pro-big-4.jpg">
+									<img class="d-block w-100" src="../img/product-img/pro-big-4.jpg"
 									alt="Fourth slide">
 								</a>
 							</div>
@@ -72,9 +78,9 @@
 					<!-- Product Meta Data -->
 					<div class="product-meta-data">
 						<div class="line"></div>
-						<p class="product-price">&#8361; ${df.format(product.price) }</p>
+						<p class="product-price">$180</p>
 						<a href="product-details.jsp">
-							<h6>${product.pname }</h6>
+							<h6>White Modern Chair</h6>
 						</a>
 						<!-- Ratings & Review -->
 						<div
@@ -88,14 +94,11 @@
 							</div>
 							<div class="review">
 								<a href="#">Write A Review</a>
-							<c:if test="${authUser != null && authUser.id eq 'admin'}">
-								<br><a href="${ctxPath }/libido/addToSale.do?code=${product.code}">Add To Sale</a>
-							</c:if>
 							</div>
 						</div>
 						<!-- Avaiable -->
 						<p class="avaibility">
-							<i class="fa fa-circle"></i> 재고 있음
+							<i class="fa fa-circle"></i> In Stock
 						</p>
 					</div>
 
@@ -109,7 +112,7 @@
 					<!-- Add to Cart Form -->
 					<form class="cart clearfix" method="post">
 						<div class="cart-btn d-flex mb-50">
-							<p>수량</p>
+							<p>Qty</p>
 							<div class="quantity">
 								<span class="qty-minus"
 									onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
@@ -122,7 +125,7 @@
 							</div>
 						</div>
 						<button type="submit" name="addtocart" value="5"
-							class="btn amado-btn">장바구니 담기</button>
+							class="btn amado-btn">Add to cart</button>
 					</form>
 
 				</div>

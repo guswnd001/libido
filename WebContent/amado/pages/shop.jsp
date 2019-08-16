@@ -13,13 +13,13 @@
 		<!--  Catagories  -->
 		<div class="catagories-menu">
 			<ul>
-				<li><a href="#">All</a></li>
-				<li><a href="#">T-Shirts</a></li>
-				<li><a href="#">Shirts</a></li>
-				<li><a href="#">Pants</a></li>
-				<li><a href="#">Hat & Cap</a></li>
-				<li><a href="#">Shoes</a></li>
-				<li><a href="#">Bags</a></li>
+				<li><a href="${ctxPath}/libido/shop.do">All</a></li>
+				<li><a href="${ctxPath}/libido/shop.do?pkind=tshirts">T-Shirts</a></li>
+				<li><a href="${ctxPath}/libido/shop.do?pkind=shirts">Shirts</a></li>
+				<li><a href="${ctxPath}/libido/shop.do?pkind=pants">Pants</a></li>
+				<li><a href="${ctxPath}/libido/shop.do?pkind=hatCap">Hat & Cap</a></li>
+				<li><a href="${ctxPath}/libido/shop.do?pkind=shoes">Shoes</a></li>
+				<li><a href="${ctxPath}/libido/shop.do?pkind=bags">Bags</a></li>
 			</ul>
 		</div>
 	</div>
@@ -197,21 +197,62 @@
 			<div class="col-12">
 				<!-- Pagination -->
 				<nav aria-label="navigation">
-					<ul class="pagination justify-content-end mt-50">
-					
+				
+<ul class="pagination justify-content-end mt-50">
+<c:if test="${startPage > bottomLine}">
+	<li name="page" class="page-item">
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${startPage - bottomLine}&pkind=${pkind}">prev.</a>
+		</c:if>
+		<c:if test="${empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${startPage - bottomLine}">prev.</a>
+		</c:if>
+	</li>
+</c:if>
+
 <c:forEach var="i" begin="${startPage }" end="${endPage }">
 <c:if test="${i < 10 }">
 	<li name="page" class="page-item">
-		<a class="page-link" href="shop.jsp?pageNum=${i }">0${i }.</a>
-	</li>
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${i }&pkind=${pkind}">0${i }.</a>
+		</c:if>
+		<c:if test="${empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${i }">0${i }.</a>
+		</c:if>
+	</li> 
 </c:if>
 <c:if test="${i >= 10 }">
 	<li name="page" class="page-item">
-		<a class="page-link" href="shop.jsp?pageNum=${i }">${i }.</a>
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${i }&pkind=${pkind}">${i }.</a>
+		</c:if>
+		<c:if test="${empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${i }">${i }.</a>
+		</c:if>
 	</li>
 </c:if>
 </c:forEach>
-					</ul>
+
+<c:if test="${endPage < pageCount}">	
+	<li name="page" class="page-item">
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${startPage + bottomLine}&pkind=${pkind}">next.</a>
+		</c:if>
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/shop.do?pageNum=${startPage + bottomLine}">next.</a>
+		</c:if>		
+	</li>
+</c:if>
+</ul>
+					
 <script>
 	var liTag = document.getElementsByName("page");
 	

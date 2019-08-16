@@ -1,3 +1,7 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="model.Product"%>
+<%@page import="dao.ProductDao"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="shop_sidebar_area">
@@ -9,13 +13,13 @@
 		<!--  Catagories  -->
 		<div class="catagories-menu">
 			<ul>
-				<li class="active"><a href="#">Chairs</a></li>
-				<li><a href="#">Beds</a></li>
-				<li><a href="#">Accesories</a></li>
-				<li><a href="#">Furniture</a></li>
-				<li><a href="#">Home Deco</a></li>
-				<li><a href="#">Dressings</a></li>
-				<li><a href="#">Tables</a></li>
+				<li><a href="${ctxPath}/libido/sale.do">All</a></li>
+				<li><a href="${ctxPath}/libido/sale.do?pkind=tshirts">T-Shirts</a></li>
+				<li><a href="${ctxPath}/libido/sale.do?pkind=shirts">Shirts</a></li>
+				<li><a href="${ctxPath}/libido/sale.do?pkind=pants">Pants</a></li>
+				<li><a href="${ctxPath}/libido/sale.do?pkind=hatCap">Hat & Cap</a></li>
+				<li><a href="${ctxPath}/libido/sale.do?pkind=shoes">Shoes</a></li>
+				<li><a href="${ctxPath}/libido/sale.do?pkind=bags">Bags</a></li>
 			</ul>
 		</div>
 	</div>
@@ -28,30 +32,28 @@
 		<div class="widget-desc">
 			<!-- Single Form Check -->
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="" id="amado">
-				<label class="form-check-label" for="amado">Amado</label>
+				<input class="form-check-input" type="checkbox" value="" id="add">
+				<label class="form-check-label" for="add">ADD</label>
 			</div>
 			<!-- Single Form Check -->
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="" id="ikea">
-				<label class="form-check-label" for="ikea">Ikea</label>
+				<input class="form-check-input" type="checkbox" value="" id="tmu">
+				<label class="form-check-label" for="tmu">The<br>T-shirts Museum</label>
 			</div>
 			<!-- Single Form Check -->
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value=""
-					id="furniture"> <label class="form-check-label"
-					for="furniture">Furniture Inc</label>
-			</div>
-			<!-- Single Form Check -->
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value=""
-					id="factory"> <label class="form-check-label" for="factory">The
-					factory</label>
+				<input class="form-check-input" type="checkbox" value="" id="prl">
+				<label class="form-check-label" for="prl">Polo<br>Ralph Lauren</label>
 			</div>
 			<!-- Single Form Check -->
 			<div class="form-check">
 				<input class="form-check-input" type="checkbox" value=""
-					id="artdeco"> <label class="form-check-label" for="artdeco">Artdeco</label>
+					id="mmgu"> <label class="form-check-label" for="mmgu">MMGU</label>
+			</div>
+			<!-- Single Form Check -->
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value=""
+					id="aeca"> <label class="form-check-label" for="aeca">AECA WHITE</label>
 			</div>
 		</div>
 	</div>
@@ -78,7 +80,7 @@
 	<!-- ##### Single Widget ##### -->
 	<div class="widget price mb-50">
 		<!-- Widget Title -->
-		<h6 class="widget-title mb-30">Price</h6>
+		<h6 class="widget-title mb-30">Price(&#8361;10000)</h6>
 
 		<div class="widget-desc">
 			<div class="slider-range">
@@ -91,7 +93,12 @@
 						class="ui-slider-handle ui-state-default ui-corner-all"
 						tabindex="0"></span>
 				</div>
-				<div class="range-price">$10 - $1000</div>
+				<div class="range-price">&#8361;1 - &#8361;100</div>
+				<div>
+					<h3 class="widget-title mb-30">
+					<a href="p_inputForm.jsp">Write</a>
+					</h3>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -128,10 +135,10 @@
 							<p>View</p>
 							<form action="#" method="get">
 								<select name="select" id="viewProduct">
-									<option value="value">12</option>
-									<option value="value">24</option>
-									<option value="value">48</option>
-									<option value="value">96</option>
+									<option value="6">6</option>
+									<option value="12">12</option>
+									<option value="24">24</option>
+									<option value="48">48</option>
 								</select>
 							</form>
 						</div>
@@ -139,17 +146,19 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="row">
-
+		<c:forEach var="product" items="${productList }">
 			<!-- Single Product Area -->
 			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
 				<div class="single-product-wrapper">
 					<!-- Product Image -->
 					<div class="product-img">
-						<img src="img/product-img/product1.jpg" alt="">
+						<a href="${ctxPath}/libido/saleProducts.do?code=${product.code}">
+						<img src="${ctxPath}/amado/img/product-img/${product.photo1 }.jpg" alt="">
 						<!-- Hover Thumb -->
-						<img class="hover-img" src="img/product-img/product2.jpg" alt="">
+						<img class="hover-img" src="${ctxPath}/amado/img/product-img/${product.photo2 }.jpg" alt="">
+						</a>
 					</div>
 
 					<!-- Product Description -->
@@ -158,9 +167,9 @@
 						<!-- Product Meta Data -->
 						<div class="product-meta-data">
 							<div class="line"></div>
-							<p class="product-price">$180</p>
+							<p class="product-price">&#8361;<del>${df.format(product.price) }</del>&nbsp;&nbsp;${df.format(product.price * 0.9) }(-10%)</p>
 							<a href="product-details.html">
-								<h6>Modern Chair</h6>
+								<h6>${product.pname }</h6>
 							</a>
 						</div>
 						<!-- Ratings & Cart -->
@@ -180,218 +189,88 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
-				<div class="single-product-wrapper">
-					<!-- Product Image -->
-					<div class="product-img">
-						<img src="img/product-img/product2.jpg" alt="">
-						<!-- Hover Thumb -->
-						<img class="hover-img" src="img/product-img/product3.jpg" alt="">
-					</div>
-
-					<!-- Product Description -->
-					<div
-						class="product-description d-flex align-items-center justify-content-between">
-						<!-- Product Meta Data -->
-						<div class="product-meta-data">
-							<div class="line"></div>
-							<p class="product-price">$180</p>
-							<a href="product-details.html">
-								<h6>Modern Chair</h6>
-							</a>
-						</div>
-						<!-- Ratings & Cart -->
-						<div class="ratings-cart text-right">
-							<div class="ratings">
-								<i class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i>
-							</div>
-							<div class="cart">
-								<a href="cart.html" data-toggle="tooltip" data-placement="left"
-									title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
-				<div class="single-product-wrapper">
-					<!-- Product Image -->
-					<div class="product-img">
-						<img src="img/product-img/product3.jpg" alt="">
-						<!-- Hover Thumb -->
-						<img class="hover-img" src="img/product-img/product4.jpg" alt="">
-					</div>
-
-					<!-- Product Description -->
-					<div
-						class="product-description d-flex align-items-center justify-content-between">
-						<!-- Product Meta Data -->
-						<div class="product-meta-data">
-							<div class="line"></div>
-							<p class="product-price">$180</p>
-							<a href="product-details.html">
-								<h6>Modern Chair</h6>
-							</a>
-						</div>
-						<!-- Ratings & Cart -->
-						<div class="ratings-cart text-right">
-							<div class="ratings">
-								<i class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i>
-							</div>
-							<div class="cart">
-								<a href="cart.html" data-toggle="tooltip" data-placement="left"
-									title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
-				<div class="single-product-wrapper">
-					<!-- Product Image -->
-					<div class="product-img">
-						<img src="img/product-img/product4.jpg" alt="">
-						<!-- Hover Thumb -->
-						<img class="hover-img" src="img/product-img/product5.jpg" alt="">
-					</div>
-
-					<!-- Product Description -->
-					<div
-						class="product-description d-flex align-items-center justify-content-between">
-						<!-- Product Meta Data -->
-						<div class="product-meta-data">
-							<div class="line"></div>
-							<p class="product-price">$180</p>
-							<a href="product-details.html">
-								<h6>Modern Chair</h6>
-							</a>
-						</div>
-						<!-- Ratings & Cart -->
-						<div class="ratings-cart text-right">
-							<div class="ratings">
-								<i class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i>
-							</div>
-							<div class="cart">
-								<a href="cart.html" data-toggle="tooltip" data-placement="left"
-									title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
-				<div class="single-product-wrapper">
-					<!-- Product Image -->
-					<div class="product-img">
-						<img src="img/product-img/product5.jpg" alt="">
-						<!-- Hover Thumb -->
-						<img class="hover-img" src="img/product-img/product6.jpg" alt="">
-					</div>
-
-					<!-- Product Description -->
-					<div
-						class="product-description d-flex align-items-center justify-content-between">
-						<!-- Product Meta Data -->
-						<div class="product-meta-data">
-							<div class="line"></div>
-							<p class="product-price">$180</p>
-							<a href="product-details.html">
-								<h6>Modern Chair</h6>
-							</a>
-						</div>
-						<!-- Ratings & Cart -->
-						<div class="ratings-cart text-right">
-							<div class="ratings">
-								<i class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i>
-							</div>
-							<div class="cart">
-								<a href="cart.html" data-toggle="tooltip" data-placement="left"
-									title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-md-12 col-xl-6">
-				<div class="single-product-wrapper">
-					<!-- Product Image -->
-					<div class="product-img">
-						<img src="img/product-img/product6.jpg" alt="">
-						<!-- Hover Thumb -->
-						<img class="hover-img" src="img/product-img/product1.jpg" alt="">
-					</div>
-
-					<!-- Product Description -->
-					<div
-						class="product-description d-flex align-items-center justify-content-between">
-						<!-- Product Meta Data -->
-						<div class="product-meta-data">
-							<div class="line"></div>
-							<p class="product-price">$180</p>
-							<a href="product-details.html">
-								<h6>Modern Chair</h6>
-							</a>
-						</div>
-						<!-- Ratings & Cart -->
-						<div class="ratings-cart text-right">
-							<div class="ratings">
-								<i class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i> <i
-									class="fa fa-star" aria-hidden="true"></i>
-							</div>
-							<div class="cart">
-								<a href="cart.html" data-toggle="tooltip" data-placement="left"
-									title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		</c:forEach>
+			
+			
 		</div>
-
 		<div class="row">
 			<div class="col-12">
 				<!-- Pagination -->
 				<nav aria-label="navigation">
 					<ul class="pagination justify-content-end mt-50">
-						<li class="page-item active"><a class="page-link" href="#">01.</a></li>
-						<li class="page-item"><a class="page-link" href="#">02.</a></li>
-						<li class="page-item"><a class="page-link" href="#">03.</a></li>
-						<li class="page-item"><a class="page-link" href="#">04.</a></li>
-					</ul>
+<c:if test="${startPage > bottomLine}">
+	<li name="page" class="page-item">
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${startPage - bottomLine}&pkind=${pkind}">prev.</a>
+		</c:if>
+		<c:if test="${empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${startPage - bottomLine}">prev.</a>
+		</c:if>
+	</li>
+</c:if>
+
+<c:forEach var="i" begin="${startPage }" end="${endPage }">
+<c:if test="${i < 10 }">
+	<li name="page" class="page-item">
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${i }&pkind=${pkind}">0${i }.</a>
+		</c:if>
+		<c:if test="${empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${i }">0${i }.</a>
+		</c:if>
+	</li> 
+</c:if>
+<c:if test="${i >= 10 }">
+	<li name="page" class="page-item">
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${i }&pkind=${pkind}">${i }.</a>
+		</c:if>
+		<c:if test="${empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${i }">${i }.</a>
+		</c:if>
+	</li>
+</c:if>
+</c:forEach>
+
+<c:if test="${endPage < pageCount}">	
+	<li name="page" class="page-item">
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${startPage + bottomLine}&pkind=${pkind}">next.</a>
+		</c:if>
+		<c:if test="${!empty pkind }">
+		<a class="page-link" 
+		href="<%=request.getContextPath() %>/libido/sale.do?pageNum=${startPage + bottomLine}">next.</a>
+		</c:if>		
+	</li>
+</c:if>
+</ul>
+
+<script>
+	var liTag = document.getElementsByName("page");
+	
+	
+	if (${currentPage == null} || ${currentPage == ""}) {
+	   	liTag[0].className += " active";
+	} else if (${currentPage > bottomLine}) {
+	   	liTag[${currentPage - bottomLine}].className += " active"; 
+	} else {
+	   	liTag[${currentPage - 1}].className += " active"; 
+	}
+</script>
 				</nav>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
-
 <!-- ##### Main Content Wrapper End ##### -->
+
+
+

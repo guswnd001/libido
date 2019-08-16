@@ -77,7 +77,23 @@ public class BoardAction extends Action{
 	} 
 
 	public String joinGET(HttpServletRequest req, HttpServletResponse res) throws Exception { 
-		 return  "/amado/pages/joinForm.jsp"; 
+		MemberDao manager = new MemberDao();
+		List li = null;
+		li = manager.getId(); 
+		StringBuffer existId = new StringBuffer();
+
+		for(int i=0; i<li.size(); i++) {
+			if(existId.length()>0) {
+				existId.append(',');
+			}
+			existId.append('"').append(li.get(i)).append('"');
+		}
+		
+		System.out.println(existId.toString());
+		
+		req.setAttribute("existId", existId.toString());
+		
+		return  "/amado/pages/joinForm.jsp"; 
 	}
 	
 	public String joinPOST(HttpServletRequest req, HttpServletResponse res) throws Exception { 
@@ -170,6 +186,10 @@ public class BoardAction extends Action{
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		
+		System.out.println("startPage: " + startPage);
+		System.out.println("endPage: " + endPage);
+		System.out.println("pageCount: " + pageCount);
+		
 		return "/amado/pages/b_list.jsp";
 	}
 	
@@ -191,7 +211,7 @@ public class BoardAction extends Action{
 		if (pageNum == null || pageNum == "") {
 			pageNum = "1";
 		}
-
+		
 		ses.setAttribute("pageNum", pageNum);
 
 		int currentPage = Integer.parseInt(pageNum);
@@ -200,7 +220,18 @@ public class BoardAction extends Action{
 		int startRow = (currentPage - 1) * pageSize;
 		int endRow = currentPage * pageSize;
 		int number = aCount - startRow;
-		List productList = dbPro.getProducts(startRow, pageSize);
+		List productList = null;
+		
+		String pkind = req.getParameter("pkind");
+		if (pkind != null) {
+			productList = dbPro.getProducts(startRow, pageSize, pkind);//여기까지함!!!! 품목별 상품들 불러오는거
+			aCount = dbPro.getProductCount(pkind); 
+		} else {
+			productList = dbPro.getProducts(startRow, pageSize);
+			aCount = dbPro.getProductCount(); 
+		}
+		
+		System.out.println(productList);
 		
 		if (aCount < endRow) { endRow = aCount; }
 		
@@ -219,6 +250,13 @@ public class BoardAction extends Action{
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("bottomLine", bottomLine);
+		req.setAttribute("pkind", pkind);
+		
+		System.out.println("startPage: " + startPage);
+		System.out.println("endPage: " + endPage);
+		System.out.println("pageCount: " + pageCount);
 
 		return  "/amado/pages/shop.jsp";
 	} 
@@ -528,6 +566,61 @@ public class BoardAction extends Action{
 		
 		System.out.println(user);
 		
+		ProductDao dbPro = ProductDao.getInstance();
+
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum == null || pageNum == "") {
+			pageNum = "1";
+		}
+
+		//ses.setAttribute("pageNum", pageNum);
+
+		int currentPage = Integer.parseInt(pageNum);
+		int pageSize = 6;
+		int aCount = 0; 
+		int startRow = (currentPage - 1) * pageSize;
+		int endRow = currentPage * pageSize;
+		int number = aCount - startRow;
+		List productList = null;
+		
+		String pkind = req.getParameter("pkind");
+		if (pkind != null) {
+			productList = dbPro.getProducts(startRow, pageSize, pkind, 1);
+			aCount = dbPro.getProductCount(pkind, 1); 
+		} else {
+			productList = dbPro.getProducts(startRow, pageSize, 1);
+			aCount = dbPro.getProductCount(1); 
+		}
+		
+		System.out.println("sale: " + productList);
+		
+		if (aCount < endRow) { endRow = aCount; }
+		
+		int bottomLine = 4;
+		int pageCount = aCount / pageSize + (aCount % pageSize == 0? 0 : 1); //2
+		int startPage = 1 + (currentPage - 1) / bottomLine * bottomLine; //1
+		int endPage = startPage + bottomLine - 1; //3
+		
+		if (pageCount < endPage) endPage = pageCount;
+		
+		
+		DecimalFormat df = new DecimalFormat("#,###");
+		
+		req.setAttribute("df", df);
+		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("pageSize", pageSize);
+		req.setAttribute("aCount", aCount);
+		req.setAttribute("productList", productList);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		req.setAttribute("pageNum", pageNum);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("bottomLine", bottomLine);
+		
+		System.out.println("startPage: " + startPage);
+		System.out.println("endPage: " + endPage);
+		System.out.println("pageCount: " + pageCount);
+
 		return  "/amado/pages/sale.jsp";
 	} 
 	
@@ -539,7 +632,47 @@ public class BoardAction extends Action{
 		System.out.println(user);
 		
 		return  "/amado/pages/coodibook.jsp";
+	}
+	
+	public String addToSaleGET(HttpServletRequest req, HttpServletResponse res) throws Exception { 
+		String code = req.getParameter("code");
+		
+		ProductDao dbPro = ProductDao.getInstance();
+		dbPro.addToSale(code);
+		
+		req.setAttribute("code", code);
+		
+		return  "/amado/pages/addToSalePro.jsp";
 	} 
 	
+	public String saleProductsGET(HttpServletRequest req, HttpServletResponse res) throws Exception { 
+		HttpSession ses = req.getSession();
+		User user = (User)ses.getAttribute("authUser");
+		String code = (String)req.getParameter("code");
+		
+		System.out.println(code);
+		System.out.println(user);
+		
+		ProductDao dbPro = ProductDao.getInstance();
+		Product product = dbPro.getProduct(code);
+		
+		DecimalFormat df = new DecimalFormat("#,###");
+		
+		req.setAttribute("authUser", user);
+		req.setAttribute("product", product);
+		req.setAttribute("df", df);
+		
+		
+		return  "/amado/pages/saleProducts.jsp"; 	 
+	} 
+	
+	public String deleteAtSaleGET(HttpServletRequest req, HttpServletResponse res) throws Exception { 
+		String code = req.getParameter("code");
+		
+		ProductDao dbPro = ProductDao.getInstance();
+		dbPro.deleteAtSale(code);
+		
+		return  "/amado/pages/deleteAtSalePro.jsp";
+	} 
 	
 }
